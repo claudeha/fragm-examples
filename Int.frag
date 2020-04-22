@@ -25,7 +25,7 @@ int neg(int i)
 
 int mul(int i, int j)
 {
-  return i - j;
+  return i * j;
 }
 
 int div(int i, int j)
