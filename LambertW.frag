@@ -13,6 +13,8 @@ Lambert W function template instantiation.
 #undef real
 #undef REAL
 
+#ifdef USE_DOUBLE
+
 #define REAL double
 #define real double
 #define REAL_EPS 2.2204460492503131e-16LF
@@ -22,6 +24,8 @@ Lambert W function template instantiation.
 #undef REAL_EPS
 #undef real
 #undef REAL
+
+#endif
 
 #define REAL FloatX
 #define real floatx
@@ -33,6 +37,8 @@ Lambert W function template instantiation.
 #undef real
 #undef REAL
 
+#ifdef USE_DOUBLE
+
 #define REAL DoubleX
 #define real doublex
 #define REAL_EPS doublex(2.2204460492503131e-16LF)
@@ -42,3 +48,5 @@ Lambert W function template instantiation.
 #undef REAL_EPS
 #undef real
 #undef REAL
+
+#endif

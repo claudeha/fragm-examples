@@ -51,6 +51,8 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
+#ifdef USE_DOUBLE
+
 #define MONO double
 #define mono double
 #define DDIM 1
@@ -98,6 +100,8 @@ Dual number template instantiation file.
 #undef DDIM
 #undef mono
 #undef MONO
+
+#endif
 
 #define MONO FloatX
 #define mono floatx
@@ -147,6 +151,8 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
+#ifdef USE_DOUBLE
+
 #define MONO DoubleX
 #define mono doublex
 #define DDIM 1
@@ -194,3 +200,5 @@ Dual number template instantiation file.
 #undef DDIM
 #undef mono
 #undef MONO
+
+#endif

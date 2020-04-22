@@ -21,6 +21,8 @@ Extended exponent float template instantiation file.
 #undef mantissa
 #undef MANTISSA
 
+#ifdef USE_DOUBLE
+
 #define MANTISSA double
 #define mantissa double
 #define EXPONENT int
@@ -38,3 +40,5 @@ Extended exponent float template instantiation file.
 #undef EXPONENT
 #undef mantissa
 #undef MANTISSA
+
+#endif

@@ -75,6 +75,8 @@ Vector template instantation.
 #undef vec
 #undef VEC
 
+#ifdef USE_DOUBLE
+
 #define VEC Vec2d
 #define vec vec2d
 #define SCALAR double
@@ -146,6 +148,8 @@ Vector template instantation.
 #undef SCALAR
 #undef vec
 #undef VEC
+
+#endif
 
 #define VEC Vec2fx
 #define vec vec2fx

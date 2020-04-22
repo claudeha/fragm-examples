@@ -9,8 +9,12 @@ Real number primitive template instantiation.
 #undef real
 #undef REAL
 
+#ifdef USE_DOUBLE
+
 #define REAL double
 #define real double
 #include "RealBase.frag"
 #undef real
 #undef REAL
+
+#endif
