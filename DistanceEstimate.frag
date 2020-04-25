@@ -77,8 +77,13 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   }
   // get last 3 iterates
   FloatX z0 = length(zz).x;
-  FloatX Z = z0;
+  // iterate 2 more times for estimates of scaling
+  formula(zz, cc);
+  FloatX z1 = length(zz).x;
+  formula(zz, cc);
+  FloatX z2 = length(zz).x;
   // compute derivative and normal
+  FloatX Z = z2;
   FloatX u[3];
   u[0] = zz.v[0].x;
   u[1] = zz.v[1].x;
@@ -125,11 +130,6 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
       normal[i] = convert_float(mul(s, v[i]));
     }
   }
-  // iterate 2 more times for estimates of scaling
-  formula(zz, cc);
-  FloatX z1 = length(zz).x;
-  formula(zz, cc);
-  FloatX z2 = length(zz).x;
   // logs
   float log_z0 = convert_float(log(z0));
   float log_z1 = convert_float(log(z1));
@@ -155,22 +155,16 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   }
   // compute final results
   float /*f, */df;
-  if (log_a == 0) // a == 1
+  if (eq(p, 1))
   {
-    // f = log(log_Z / log_R) / log_p;
-    df = convert_float(div(dZ, mul(Z, mul(log_Z, log_p))));
-  }
-  else if (p == 1)
-  {
-    // f = (log_Z - log_R) / log_a;
-    df = convert_float(div(dZ, mul(Z, log_a)));
+    // f = div(log_Z, log_a);
+    df = div(convert_float(div(dZ, Z)), log_a);
   }
   else
   {
-    FloatX w = gsl_sf_lambert_W0
-      (mul(pow(floatx(p), floatx(log_Z / log_a)), floatx(log_p * log_R / log_a)));
-    // f = log_Z / log_a - w / log_p;
-    df = convert_float(div(dZ, mul(Z, mul(add(w, floatx(1)), floatx(log_a)))));
+    // f = div(log(add(log_a, mul(sub(p, 1), log_Z))), log_p);
+    df = mul(convert_float(div(dZ, Z)), div(sub(p, 1),
+      mul(log_p, log(add(log_a, mul(sub(p, 1), log_Z))))));
   }
   float de = float(1) / df;
   if (isnan(de) || isinf(de))

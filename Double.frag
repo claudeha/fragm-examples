@@ -17,14 +17,6 @@ dvec2 f(dvec2 x, dvec2 y) { return dvec2(f(x.x, y.x), f(x.y, y.y)); } \
 dvec3 f(dvec3 x, dvec3 y) { return dvec3(f(x.x, y.x), f(x.y, y.y), f(x.z, y.z)); } \
 dvec4 f(dvec4 x, dvec4 y) { return dvec4(f(x.x, y.x), f(x.y, y.y), f(x.z, y.z), f(x.w, y.w)); }
 
-// constants
-
-const double M_PI = 3.14159265358979323846LF;
-const double M_2PI = M_PI*2.0LF;
-const double M_PI2 = M_PI/2.0LF;
-const double M_E = 2.71828182845904523536LF;
-const double M_EHALF = 1.6487212707001281469LF;
-
 // implement improved square root
 // built in square root, length, distance, normalize is not accurate
 
