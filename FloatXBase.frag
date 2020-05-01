@@ -9,6 +9,11 @@ struct FLOATX
   EXPONENT e;
 };
 
+FLOATX floatx(FLOATX f)
+{
+  return f;
+}
+
 FLOATX floatx(float m, EXPONENT e)
 {
   FLOATX f;
