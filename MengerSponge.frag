@@ -22,8 +22,8 @@ void MengerSponge(inout VEC z, SCALAR scale) \
   if (lt(scalar(1), z.v[2])) \
     z.v[2] = sub(z.v[2], sub(scale, scalar(1))); \
 }
+MENGERSPONGE(Vec3fx, FloatX, floatx, FloatX, floatx)
 MENGERSPONGE(Vec3Dual3f, Dual3f, dual3f, float, float)
-MENGERSPONGE(Vec3Dual3fx, Dual3fx, dual3fx, FloatX, floatx)
 #undef MENGERSPONGE
 
 #undef swap

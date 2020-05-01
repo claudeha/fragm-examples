@@ -6,7 +6,7 @@ At the first iteration `z = c`.
 */
 
 void formula(inout Vec3Dual3f z, in Vec3Dual3f c);
-void formula(inout Vec3Dual3fx z, in Vec3Dual3fx c);
+void formula(inout Vec3fx z, in Vec3fx c);
 
 #group DistanceEstimate
 // Maximum number of times to iterate the formula
@@ -48,46 +48,38 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   }
   // promote to FloatX
   // because after initial escape, values explode quickly
-  Vec3Dual3fx cc;
+  Vec3fx cc;
   for (int i = 0; i < 3; ++i)
   {
-    cc.v[i].x = floatx(c.v[i].x);
-    for (int j = 0; j < 3; ++j)
-    {
-      cc.v[i].d[j] = floatx(c.v[i].d[j]);
-    }
+    cc.v[i] = floatx(c.v[i].x);
   }
-  Vec3Dual3fx zz;
+  Vec3fx zz;
   for (int i = 0; i < 3; ++i)
   {
-    zz.v[i].x = floatx(z.v[i].x);
-    for (int j = 0; j < 3; ++j)
-    {
-      zz.v[i].d[j] = floatx(z.v[i].d[j]);
-    }
+    zz.v[i] = floatx(z.v[i].x);
   }
   // iterate some more
   for (; n < Iterations; ++n)
   {
-    if (! lt(dot(zz, zz).x, EscapeRadius2))
+    if (! lt(dot(zz, zz), EscapeRadius2))
     {
       break;
     }
     formula(zz, cc);
   }
   // get last 3 iterates
-  FloatX z0 = length(zz).x;
+  FloatX z0 = length(zz);
   // iterate 2 more times for estimates of scaling
   formula(zz, cc);
-  FloatX z1 = length(zz).x;
+  FloatX z1 = length(zz);
   formula(zz, cc);
-  FloatX z2 = length(zz).x;
+  FloatX z2 = length(zz);
   // compute derivative and normal
-  FloatX Z = z2;
+  FloatX Z = floatx(sqrt(dot(z, z).x));
   FloatX u[3];
-  u[0] = zz.v[0].x;
-  u[1] = zz.v[1].x;
-  u[2] = zz.v[2].x;
+  u[0] = floatx(z.v[0].x);
+  u[1] = floatx(z.v[1].x);
+  u[2] = floatx(z.v[2].x);
   {
     // normalize u
     FloatX s = floatx(0);
@@ -106,7 +98,7 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   {
     for (int j = 0; j < 3; ++j)
     {
-      J[i][j] = zz.v[j].d[i];
+      J[i][j] = floatx(z.v[j].d[i]);
     }
   }
   FloatX v[3];
