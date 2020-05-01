@@ -40,7 +40,7 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   Vec3Dual3f z = c;
   for (n = 0; n < Iterations; ++n)
   {
-    if (! lt(dot(z, z).x, float(2)))
+    if (! lt(dot(z, z).x, float(4)))
     {
       break;
     }
