@@ -75,6 +75,78 @@ Vector template instantation.
 #undef vec
 #undef VEC
 
+#define VEC Vec2fx
+#define vec vec2fx
+#define SCALAR FloatX
+#define scalar floatx
+#define VDIM 2
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
+#define VEC Vec3fx
+#define vec vec3fx
+#define SCALAR FloatX
+#define scalar floatx
+#define VDIM 3
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
+#define VEC Vec4fx
+#define vec vec4fx
+#define SCALAR FloatX
+#define scalar floatx
+#define VDIM 4
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
+#define VEC Vec2Dual2fx
+#define vec vec2dual2fx
+#define SCALAR Dual2fx
+#define scalar dual2fx
+#define VDIM 2
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
+#define VEC Vec3Dual3fx
+#define vec vec3dual3fx
+#define SCALAR Dual3fx
+#define scalar dual3fx
+#define VDIM 3
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
+#define VEC Vec4Dual4fx
+#define vec vec4dual4fx
+#define SCALAR Dual4fx
+#define scalar dual4fx
+#define VDIM 4
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
 #ifdef USE_DOUBLE
 
 #define VEC Vec2d
@@ -150,75 +222,3 @@ Vector template instantation.
 #undef VEC
 
 #endif
-
-#define VEC Vec2fx
-#define vec vec2fx
-#define SCALAR FloatX
-#define scalar floatx
-#define VDIM 2
-#include "VecBase.frag"
-#undef VDIM
-#undef scalar
-#undef SCALAR
-#undef vec
-#undef VEC
-
-#define VEC Vec3fx
-#define vec vec3fx
-#define SCALAR FloatX
-#define scalar floatx
-#define VDIM 3
-#include "VecBase.frag"
-#undef VDIM
-#undef scalar
-#undef SCALAR
-#undef vec
-#undef VEC
-
-#define VEC Vec4fx
-#define vec vec4fx
-#define SCALAR FloatX
-#define scalar floatx
-#define VDIM 4
-#include "VecBase.frag"
-#undef VDIM
-#undef scalar
-#undef SCALAR
-#undef vec
-#undef VEC
-
-#define VEC Vec2Dual2fx
-#define vec vec2dual2fx
-#define SCALAR Dual2fx
-#define scalar dual2fx
-#define VDIM 2
-#include "VecBase.frag"
-#undef VDIM
-#undef scalar
-#undef SCALAR
-#undef vec
-#undef VEC
-
-#define VEC Vec3Dual3fx
-#define vec vec3dual3fx
-#define SCALAR Dual3fx
-#define scalar dual3fx
-#define VDIM 3
-#include "VecBase.frag"
-#undef VDIM
-#undef scalar
-#undef SCALAR
-#undef vec
-#undef VEC
-
-#define VEC Vec4Dual4fx
-#define vec vec4dual4fx
-#define SCALAR Dual4fx
-#define scalar dual4fx
-#define VDIM 4
-#include "VecBase.frag"
-#undef VDIM
-#undef scalar
-#undef SCALAR
-#undef vec
-#undef VEC
