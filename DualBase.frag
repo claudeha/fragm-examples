@@ -284,3 +284,18 @@ DUAL abs(DUAL x)
 		return x;
 	}
 }
+
+bool lt(DUAL x, DUAL y)
+{
+	return lt(x.x, y.x);
+}
+
+bool lt(DUAL x, MONO y)
+{
+	return lt(x.x, y);
+}
+
+bool lt(MONO x, DUAL y)
+{
+	return lt(x, y.x);
+}
