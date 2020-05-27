@@ -9,7 +9,37 @@ struct TRIPLEX
   REAL x, y, z;
 };
 
+TRIPLEX add(TRIPLEX a, TRIPLEX b)
+{
+  TRIPLEX r;
+  r.x = add(a.x, b.x);
+  r.y = add(a.y, b.y);
+  r.z = add(a.z, b.z);
+  return r;
+}
+
+TRIPLEX sub(TRIPLEX a, TRIPLEX b)
+{
+  TRIPLEX r;
+  r.x = sub(a.x, b.x);
+  r.y = sub(a.y, b.y);
+  r.z = sub(a.z, b.z);
+  return r;
+}
+
 TRIPLEX mul(TRIPLEX a, TRIPLEX b)
+{
+  REAL arho = sqrt(add(sqr(a.x), sqr(a.y)));
+  REAL brho = sqrt(add(sqr(b.x), sqr(b.y)));
+  REAL A = sub(real(1), div(mul(a.z, b.z), mul(arho, brho)));
+  TRIPLEX r;
+  r.x = mul(A, sub(mul(a.x, b.x), mul(a.y, b.y)));
+  r.y = mul(A, add(mul(b.x, a.y), mul(a.x, b.y)));
+  r.z = add(mul(arho, b.z), mul(brho, a.z));
+  return r;
+}
+
+TRIPLEX div(TRIPLEX a, TRIPLEX b)
 {
   REAL arho = sqrt(add(sqr(a.x), sqr(a.y)));
   REAL brho = sqrt(add(sqr(b.x), sqr(b.y)));
