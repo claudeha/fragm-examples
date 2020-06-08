@@ -20,7 +20,9 @@ void MandelbulbTrig(inout VEC w, in VEC c, NUM n) \
   w.v[2] = cos(theta); \
   w = add(mul(r2, w), c); \
 }
+#if __VERSION__ >= 400
 MANDELBULB(Vec3fx, FloatX, FloatX, floatx)
+#endif
 MANDELBULB(Vec3Dual3f, Dual3f, float, float)
 #undef MANDELBULB
 
@@ -41,6 +43,8 @@ void MandelbulbTriplex(inout VEC w, in VEC c) \
   w.v[2] = z.z; \
   w = add(w, c); \
 }
+#if __VERSION__ >= 400
 MANDELBULB(Triplexfx, Vec3fx)
+#endif
 MANDELBULB(TriplexDual3f, Vec3Dual3f)
 #undef MANDELBULB

@@ -223,19 +223,19 @@ COMPLEX tanh(COMPLEX z)
 
 COMPLEX asin(COMPLEX z)
 {
-  const COMPLEX I = complex(real(0), real(1));
+  COMPLEX I = complex(real(0), real(1));
   return mul(neg(I), log(add(mul(I, z), sqrt(sub(real(1), sqr(z))))));
 }
 
 COMPLEX acos(COMPLEX z)
 {
-  const COMPLEX I = complex(real(0), real(1));
+  COMPLEX I = complex(real(0), real(1));
   return mul(neg(I), log(add(z, mul(I, sqrt(sub(real(1), sqr(z)))))));
 }
 
 COMPLEX atan(COMPLEX z)
 {
-  const COMPLEX I = complex(real(0), real(1));
+  COMPLEX I = complex(real(0), real(1));
   return div
     ( sub(log(add(real(1), mul(I, z))), log(sub(real(1), mul(I, z))))
     , mul(real(2), I)

@@ -1,9 +1,7 @@
 #donotrun
 /*
 Experimental Magnet-Mandelbrot bulb triplex fractal.
-
 Type 1: z_{n+1} = [(z_n^2 + c-1) / (2z_n + c-2)]^2
-
 */
 
 #define MAGNETBULB(TRIPLEX, VEC, real) \
@@ -19,6 +17,8 @@ void Magnetbulb1Triplex(inout VEC w, in VEC c) \
   w.v[2] = z.z; \
   w = add(w, c); \
 }
+#if __VERSION__ >= 400
 MAGNETBULB(Triplexfx, Vec3fx, floatx)
+#endif
 MAGNETBULB(TriplexDual3f, Vec3Dual3f, dual3f)
 #undef MAGNETBULB

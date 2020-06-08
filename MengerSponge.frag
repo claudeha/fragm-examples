@@ -22,7 +22,9 @@ void MengerSponge(inout VEC z, SCALAR scale) \
   if (lt(scalar(1), z.v[2])) \
     z.v[2] = sub(z.v[2], sub(scale, scalar(1))); \
 }
+#if __VERSION__ >= 400
 MENGERSPONGE(Vec3fx, FloatX, floatx, FloatX, floatx)
+#endif
 MENGERSPONGE(Vec3Dual3f, Dual3f, dual3f, float, float)
 #undef MENGERSPONGE
 

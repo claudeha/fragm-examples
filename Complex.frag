@@ -13,6 +13,8 @@ Complex number template instantiation file.
 #undef real
 #undef REAL
 
+#if __VERSION__ >= 400
+
 #define REAL FloatX
 #define real floatx
 #define COMPLEX Complexfx
@@ -23,8 +25,6 @@ Complex number template instantiation file.
 #undef DDIM
 #undef real
 #undef REAL
-
-#if __VERSION__ >= 400
 
 #define REAL double
 #define real double

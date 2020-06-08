@@ -11,17 +11,19 @@ Triplex template instantiation.
 #undef REAL
 #undef TRIPLEX
 
-#define TRIPLEX Triplexfx
-#define REAL FloatX
-#define real floatx
+#define TRIPLEX TriplexDual3f
+#define REAL Dual3f
+#define real float
 #include "TriplexBase.frag"
 #undef real
 #undef REAL
 #undef TRIPLEX
 
-#define TRIPLEX TriplexDual3f
-#define REAL Dual3f
-#define real float
+#if __VERSION__ >= 400
+
+#define TRIPLEX Triplexfx
+#define REAL FloatX
+#define real floatx
 #include "TriplexBase.frag"
 #undef real
 #undef REAL
@@ -34,8 +36,6 @@ Triplex template instantiation.
 #undef real
 #undef REAL
 #undef TRIPLEX
-
-#if __VERSION__ >= 400
 
 #define TRIPLEX Triplexd
 #define REAL double

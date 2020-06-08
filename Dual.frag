@@ -101,8 +101,6 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
-#endif
-
 #define MONO FloatX
 #define mono floatx
 #define DDIM 1
@@ -150,8 +148,6 @@ Dual number template instantiation file.
 #undef DDIM
 #undef mono
 #undef MONO
-
-#if __VERSION__ >= 400
 
 #define MONO DoubleX
 #define mono doublex

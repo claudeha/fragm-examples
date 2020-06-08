@@ -77,6 +77,8 @@ vec2 add(vec2 a, vec2 b) { return a + b; }
 #undef vec
 #undef VEC
 
+#if __VERSION__ >= 400
+
 #define VEC Vec2fx
 #define vec vec2fx
 #define SCALAR FloatX
@@ -148,8 +150,6 @@ vec2 add(vec2 a, vec2 b) { return a + b; }
 #undef SCALAR
 #undef vec
 #undef VEC
-
-#if __VERSION__ >= 400
 
 dvec2 add(dvec2 a, dvec2 b) { return a + b; }
 
