@@ -24,3 +24,4 @@ Library definition.
 #include "Mandelbulb.frag"
 #include "MengerSponge.frag"
 #include "Magnetbulb.frag"
+#include "Hash.frag"
