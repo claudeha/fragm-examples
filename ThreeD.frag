@@ -3,7 +3,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "Common.frag"
-#include "DistanceEstimate.frag"
 #include "MathUtils.frag"
 #include "DE-Raytracer.frag" 
 
