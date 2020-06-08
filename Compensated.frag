@@ -233,6 +233,16 @@ bool eq(Compensated2 a, Compensated2 b)
   return a.x[0] == b.x[0] && a.x[1] == b.x[1];
 }
 
+bool isnan(Compensated2 a)
+{
+  return isnan(a.x[0]) || isnan(a.x[1]);
+}
+
+bool isinf(Compensated2 a)
+{
+  return isinf(a.x[0]) || isinf(a.x[1]);
+}
+
 #if 0
 
 struct Vec2Compensated2
