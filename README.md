@@ -17,7 +17,8 @@ their `#info` for descriptions.
 
 Note that `00-Mandelbulb-vs-Menger.frag` takes a *long* time to compile
 on Mesa 20 AMDGPU; `00-MandelbarDE.frag` is currently broken due to
-missing support files.
+missing support files; `00-Mandelbrot-3D.frag` is *extremely* heavy and
+may cause your desktop session to crash.
 
 
 ## Library
