@@ -1,33 +1,33 @@
 #donotrun
 /*
 Distance estimates for z -> a*z, z -> z^p, z -> a*z^p.
-Client should implement `formula()` which does one iteration step.
+Client should implement `deFormula()` which does one iteration step.
 At the first iteration `z = c`.
 */
 
-void formula(inout Vec3Dual3f z, in Vec3Dual3f c);
-void formula(inout Vec3fx z, in Vec3fx c);
+void deFormula(inout Vec3Dual3f z, in Vec3Dual3f c);
+void deFormula(inout Vec3fx z, in Vec3fx c);
 
 #group DistanceEstimate
 // Maximum number of times to iterate the formula
-uniform int Iterations; slider[0,100,10000]
+uniform int DEIterations; slider[0,100,10000]
 // Stop iterating when bigger than this
-uniform float Log2EscapeRadius; slider[0,10,10000]
+uniform float DELog2EscapeRadius; slider[0,10,10000]
 // Force using AValue for the `a` scaling, instead of autodetect
-uniform bool OverrideA; checkbox[false]
+uniform bool DEOverrideA; checkbox[false]
 // The `a` value in `z -> a z^p`
-uniform float AValue; slider[0.001,1,1000]
+uniform float DEAValue; slider[0.001,1,1000]
 // Force using PValue for the `p` scaling, instead of autodetect
-uniform bool OverrideP; checkbox[false]
+uniform bool DEOverrideP; checkbox[false]
 // The `p` value in `z -> a z^p`
-uniform float PValue; slider[0.001,1,1000]
+uniform float DEPValue; slider[0.001,1,1000]
 // Force rounding the `p` scaling to an integer
-uniform bool RoundPToInteger; checkbox[false]
+uniform bool DERoundPToInteger; checkbox[false]
 // Scale calculated DE (may reduce overstepping)
 uniform float DEScale; slider[0.0001,0.25,10]
 
-FloatX EscapeRadius = exp2(floatx(Log2EscapeRadius));
-FloatX EscapeRadius2 = sqr(EscapeRadius);
+FloatX DEEscapeRadius = exp2(floatx(DELog2EscapeRadius));
+FloatX DEEscapeRadius2 = sqr(DEEscapeRadius);
 
 float DistanceEstimate(vec3 pos, out vec3 normal)
 {
@@ -38,13 +38,13 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   c.v[1] = dual3f(pos.y, 1);
   c.v[2] = dual3f(pos.z, 2);
   Vec3Dual3f z = c;
-  for (n = 0; n < Iterations; ++n)
+  for (n = 0; n < DEIterations; ++n)
   {
     if (! lt(dot(z, z).x, float(4)))
     {
       break;
     }
-    formula(z, c);
+    deFormula(z, c);
   }
   // promote to FloatX
   // because after initial escape, values explode quickly
@@ -59,20 +59,20 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
     zz.v[i] = floatx(z.v[i].x);
   }
   // iterate some more
-  for (; n < Iterations; ++n)
+  for (; n < DEIterations; ++n)
   {
-    if (! lt(dot(zz, zz), EscapeRadius2))
+    if (! lt(dot(zz, zz), DEEscapeRadius2))
     {
       break;
     }
-    formula(zz, cc);
+    deFormula(zz, cc);
   }
   // get last 3 iterates
   FloatX z0 = length(zz);
   // iterate 2 more times for estimates of scaling
-  formula(zz, cc);
+  deFormula(zz, cc);
   FloatX z1 = length(zz);
-  formula(zz, cc);
+  deFormula(zz, cc);
   FloatX z2 = length(zz);
   // compute derivative and normal
   FloatX Z = floatx(sqrt(dot(z, z).x));
@@ -127,23 +127,23 @@ float DistanceEstimate(vec3 pos, out vec3 normal)
   float log_z1 = convert_float(log(z1));
   float log_z2 = convert_float(log(z2));
   float log_Z = log_z0;
-  float log_R = convert_float(log(EscapeRadius));
+  float log_R = convert_float(log(DEEscapeRadius));
   // estimate power
   float p = (log_z2 - log_z1) / (log_z1 - log_z0);
-  if (OverrideP)
+  if (DEOverrideP)
   {
-    p = PValue;
+    p = DEPValue;
   }
-  if (RoundPToInteger)
+  if (DERoundPToInteger)
   {
     p = round(p);
   }
   float log_p = log(p);
   // estimate scaling
   float log_a = ((log_z2 - p * log_z1) + (log_z1 - p * log_z0)) * 0.5;
-  if (OverrideA)
+  if (DEOverrideA)
   {
-    log_a = log(AValue);
+    log_a = log(DEAValue);
   }
   // compute final results
   float /*f, */df;
