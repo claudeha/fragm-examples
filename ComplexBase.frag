@@ -10,6 +10,11 @@ struct COMPLEX
   REAL x, y;
 };
 
+COMPLEX complex(REAL x)
+{
+  return COMPLEX(x, real(0));
+}
+
 COMPLEX complex(REAL x, REAL y)
 {
   return COMPLEX(x, y);
@@ -260,4 +265,20 @@ COMPLEX acosh(COMPLEX z)
 COMPLEX atanh(COMPLEX z)
 {
   return mul(real(0.5), sub(log(add(real(1), z)), log(sub(real(1), z))));
+}
+
+
+COMPLEX atan(COMPLEX a, COMPLEX b)
+{
+  return atan(div(a, b)); // FIXME correct?
+}
+
+bool eq(COMPLEX a, COMPLEX b)
+{
+  return eq(a.x, b.x) && eq(a.y, b.y);
+}
+
+bool lt(COMPLEX a, COMPLEX b)
+{
+  return lt(a.x, b.x); // FIXME incorrect, but need a definition...
 }

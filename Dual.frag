@@ -53,6 +53,18 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
+#define MONO Complexf
+#define mono complexf
+#define DDIM 1
+#define DUAL Dual1cf
+#define dual dual1cf
+#include "DualBase.frag"
+#undef dual
+#undef DUAL
+#undef DDIM
+#undef mono
+#undef MONO
+
 #if __VERSION__ >= 400
 
 #define MONO double

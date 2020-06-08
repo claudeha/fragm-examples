@@ -1,10 +1,8 @@
-//#version 130
-// (c) 2017 Claude Heiland-Allen
+#version 330 compatibility
+// (c) 2017,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 // <http://www.fractalforums.com/index.php?topic=25237.msg99697#msg99697>
-#include "MathUtils.frag"
-#include "Complex.frag"
-#include "Progressive2D.frag"
+#include "TwoD.frag"
 
 #define N 6
 const vec2 cs[N] = vec2[N]
@@ -16,28 +14,29 @@ const vec2 cs[N] = vec2[N]
   , vec2(-0.4531227, 0.8943247)
   );
 
-vec3 color(vec2 c0)
+vec3 color(vec2 c0, vec2 dx, vec2 dy)
 {
-  float px = length(vec4(dFdx(c0), dFdy(c0)));
-  vec4 c = vec4(c0, px, 0.0);
+  float px = length(vec4(dx, dy));
+  Dual1cf c = dual1cf(complexf(c0));
+  c.d[0] = complexf(px);
   for (int i = N-1; i >= 0; --i)
   {
-    vec4 f = vec4(cs[i], 0.0, 0.0);
-    vec4 d = c - f;
-    c = cSqr(d) + f;
+    Dual1cf f = dual1cf(complexf(cs[i]));
+    Dual1cf d = sub(c, f);
+    c = add(f, sqr(d));
   }
   int n = 0;
-  vec4 z = c;
+  Dual1cf z = dual1cf(complexf(0.0));
   for (n = 0; n < 1000; ++n)
   {
-    if (dot(z.xy, z.xy) >= 1.0e10)
+    if (! lt(norm(z.x), 65536.0))
       break;
-    z = cSqr(z) + vec4(cs[0], 0.0, 0.0);
+    z = add(sqr(z), c);
   }
-  if (dot(z.xy, z.xy) < 1.0e10)
+  if (lt(norm(z.x), 65536.0))
     return vec3(1.0, 0.0, 0.0);
-  float r = length(z.xy);
-  float dr = length(z.zw);
+  float r = length(z.x);
+  float dr = length(z.d[0]);
   float de = 2.0 * r * log(r) / dr;
   float g = tanh(clamp(de, 0.0, 4.0));
   if (isnan(de) || isinf(de) || isnan(g) || isinf(g))
@@ -46,17 +45,6 @@ vec3 color(vec2 c0)
 }
 
 #preset Default
-TrigIter = 5
-TrigLimit = 1.10000000000000009
 Center = -0.368737489,0.856368542
 Zoom = 1
-Gamma = 2.2
-ToneMapping = 1
-Exposure = 1
-Brightness = 1
-Contrast = 1
-Saturation = 1
-AARange = 2
-AAExp = 1
-GaussianAA = true
 #endpreset

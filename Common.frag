@@ -19,8 +19,8 @@ Library definition.
 #if __VERSION__ >= 400
 #include "Compensated.frag"
 #endif
-#include "Dual.frag"
 #include "Complex.frag"
+#include "Dual.frag"
 #include "Vec.frag"
 #include "Triplex.frag"
 #include "Mandelbulb.frag"

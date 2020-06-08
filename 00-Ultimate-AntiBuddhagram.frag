@@ -1,14 +1,15 @@
-// (c) 2019 Claude Heiland-Allen
+#version 460 compatibility
+// (c) 2019,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 #info Ultimate Anti-Buddhagram (c) 2019 Claude Heiland-Allen
 #info <https://mathr.co.uk/blog/2019-11-20_ultimate_anti-buddhagram.html>
 
 #define providesInit
 #define providesColor
-#define WANG_HASH
-#include "MathUtils.frag"
-#include "DE-Raytracer.frag"
-#include "Complex.frag"
+#include "ThreeD.frag"
+
+void deFormula(inout Vec3Dual3f z, Vec3Dual3f c) { }
+void deFormula(inout Vec3fx z, Vec3fx c) { }
 
 #group Buddhagram
 
@@ -91,18 +92,18 @@ void init(void)
 
 float DE(vec4 cz)
 {
-  vec2 c = cz.xy;
-  vec2 z0 = cz.zw;
-  vec2 z = z0;
-  vec2 dz = vec2(1.0, 0.0);
+  Complexf c = complexf(cz.xy);
+  Complexf z0 = complexf(cz.zw);
+  Complexf z = z0;
+  Complexf dz = complexf(1.0, 0.0);
   float de = 1.0 / 0.0;
   for (int p = 0; p < MaxPeriod; ++p)
   {
-    dz = 2.0 * cMul(dz, z);
-    z = cSqr(z) + c;
-    if (dot(z, z) > 1000.0) break;
-    if (dot(dz, dz) > 1000.0) break;
-    float de1 = max(length(z - z0), length(dz) - 1.0);
+    dz = mul(2.0, mul(dz, z));
+    z = add(sqr(z), c);
+    if (norm(z) > 1000.0) break;
+    if (norm(dz) > 1000.0) break;
+    float de1 = max(length(sub(z, z0)), length(dz) - 1.0);
     de = min(de, de1);
   }
   return 0.25 * (de - Thickness);
@@ -120,18 +121,18 @@ vec3 baseColor(vec3 pos, vec3 normal) {
   cz *= M;
   cz *= Zoom;
   cz += Center;
-  vec2 c = cz.xy;
-  vec2 z0 = cz.zw;
-  vec2 z = z0;
-  vec2 dz = vec2(1.0, 0.0);
+  Complexf c = complexf(cz.xy);
+  Complexf z0 = complexf(cz.zw);
+  Complexf z = z0;
+  Complexf dz = complexf(1.0, 0.0);
   vec4 color = vec4(0.0);
   for (int p = 1; p <= MaxPeriod; ++p)
   {
-    dz = 2.0 * cMul(dz, z);
-    z = cSqr(z) + c;
-    if (dot(z, z) > 1000.0) break;
-    if (dot(dz, dz) > 1000.0) break;
-    float de1 = max(length(z - z0), length(dz) - 1.0) - Thickness;
+    dz = mul(2.0, mul(dz, z));
+    z = add(sqr(z), c);
+    if (norm(z) > 1000.0) break;
+    if (norm(dz) > 1000.0) break;
+    float de1 = max(length(sub(z, z0)), length(dz) - 1.0) - Thickness;
     color += clamp(vec4(periodColor(p), 1.0) / (1e-10 + abs(de1)), 0.0, 1e20);
   }
   return color.rgb / color.a * 20.0;

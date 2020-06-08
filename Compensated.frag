@@ -228,6 +228,11 @@ Compensated2 sign(Compensated2 a)
   return compensated2(sign(a.x[0]));
 }
 
+bool eq(Compensated2 a, Compensated2 b)
+{
+  return a.x[0] == b.x[0] && a.x[1] == b.x[1];
+}
+
 #if 0
 
 struct Vec2Compensated2
