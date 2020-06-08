@@ -27,3 +27,4 @@ Library definition.
 #include "MengerSponge.frag"
 #include "Magnetbulb.frag"
 #include "Hash.frag"
+#include "MultiWave.frag"
