@@ -1,4 +1,6 @@
 #donotrun
+// (c) 2020 Claude Heiland-Allen
+// SPDX-License-Identifier: GPL-3.0-or-later
 /*
 Capture builtin functions before redefinition.
 In GLSL, built in functions cannot be overloaded, only redefined.

@@ -1,4 +1,6 @@
 #donotrun
+// (c) 2020 Claude Heiland-Allen
+// SPDX-License-Identifier: GPL-3.0-or-later
 /*
 Distance estimates for z -> a*z, z -> z^p, z -> a*z^p.
 Client should implement `deFormula()` which does one iteration step.

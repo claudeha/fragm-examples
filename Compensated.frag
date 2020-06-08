@@ -1,4 +1,6 @@
 #donotrun
+// (c) 2020 Claude Heiland-Allen
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 // based on Debian's libqd-dev 2.3.22+dfsg.1-3
 

@@ -1,4 +1,6 @@
 #donotrun
+// (c) 2020 Claude Heiland-Allen
+// SPDX-License-Identifier: GPL-3.0-or-later
 /*
 Implement double precision versions of various functions.
 Contents mostly taken from FragM distribution with some fixes.

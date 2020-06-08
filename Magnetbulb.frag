@@ -1,4 +1,6 @@
 #donotrun
+// (c) 2020 Claude Heiland-Allen
+// SPDX-License-Identifier: GPL-3.0-or-later
 /*
 Experimental Magnet-Mandelbrot bulb triplex fractal.
 Type 1: z_{n+1} = [(z_n^2 + c-1) / (2z_n + c-2)]^2

@@ -1,4 +1,6 @@
 #donotrun
+// (c) 2020 Claude Heiland-Allen
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 // accumulate linear RGBW and output as sRGB with exposure control
 #buffer RGBA32F
