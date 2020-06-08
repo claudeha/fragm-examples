@@ -273,6 +273,42 @@ DUAL atan(DUAL y, DUAL x)
 	return d;
 }
 
+DUAL exp(DUAL x)
+{
+	DUAL d;
+	d.x = exp(x.x);
+	for (int i = 0; i < DDIM; ++i)
+	{
+		d.d[i] = mul(d.x, x.d[i]);
+	}
+	return d;
+}
+
+DUAL log(DUAL x)
+{
+	DUAL d;
+	d.x = log(x.x);
+	for (int i = 0; i < DDIM; ++i)
+	{
+		d.d[i] = div(x.d[i], x.x);
+	}
+	return d;
+}
+
+DUAL sinh(DUAL z)
+{
+	return mul(mono(0.5), sub(exp(z), exp(neg(z))));
+}
+
+DUAL cosh(DUAL z)
+{
+	return mul(mono(0.5), add(exp(z), exp(neg(z))));
+}
+
+DUAL tanh(DUAL z) {
+  return div(sinh(z), cosh(z));
+}
+
 DUAL abs(DUAL x)
 {
 	if (lt(x.x, mono(0)))
