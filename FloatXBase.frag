@@ -222,3 +222,23 @@ FLOATX max(FLOATX a, FLOATX b)
 {
   return lt(a, b) ? b : a;
 }
+
+FLOATX sign(FLOATX a)
+{
+  return floatx(sign(a.m));
+}
+
+FLOATX sinh(FLOATX z)
+{
+  return mul(floatx(0.5), sub(exp(z), exp(neg(z)))); // FIXME expm1 would improve accuracy near 0
+}
+
+FLOATX cosh(FLOATX z)
+{
+  return mul(floatx(0.5), add(exp(z), exp(neg(z))));
+}
+
+FLOATX tanh(FLOATX z)
+{
+  return div(sinh(z), cosh(z));
+}
