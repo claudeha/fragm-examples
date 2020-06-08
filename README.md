@@ -22,13 +22,20 @@ missing support files.
 
 ## Library
 
-  - `ThreeD.frag`
-
-    Main include file for 3D frags.
-
   - `TwoD.frag`
 
     Main include file for 2D frags.
+
+  - `ThreeD.frag`
+
+    Main include file for 3D frags with FragM's DE-Raytracer.
+
+  - `Raymond.frag`
+
+    Main include file for 3D frags with Raymond physically inspired ray tracer.
+
+
+## Auxiliarys files
 
   - `Common.frag`
 

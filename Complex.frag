@@ -15,6 +15,11 @@ Complex number template instantiation file.
 #undef real
 #undef REAL
 
+vec2 vec(Complexf z)
+{
+  return vec2(z.x, z.y);
+}
+
 #if __VERSION__ >= 400
 
 #define REAL FloatX
@@ -66,6 +71,11 @@ Complexf complexf(Complexd z)
 Complexd add(Complexd a, Complexf b)
 {
   return complexd(add(a.x, b.x), add(a.y, b.y));
+}
+
+dvec2 vec(Complexd z)
+{
+  return dvec2(z.x, z.y);
 }
 
 #if 0 // TODO

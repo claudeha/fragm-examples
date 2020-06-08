@@ -89,11 +89,6 @@ void formula(inout Complexd z, inout dmat2 J, Complexd c)
   }
 }
 
-dvec2 vec(Complexd z)
-{
-  return dvec2(z.x, z.y);
-}
-
 dvec3 iterate(dvec2 q)
 {
   Complexd c = complexd(q);
