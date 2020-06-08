@@ -147,7 +147,7 @@ Vector template instantation.
 #undef vec
 #undef VEC
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define VEC Vec2d
 #define vec vec2d

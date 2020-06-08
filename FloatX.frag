@@ -21,7 +21,7 @@ Extended exponent float template instantiation file.
 #undef mantissa
 #undef MANTISSA
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define MANTISSA double
 #define mantissa double

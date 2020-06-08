@@ -8,6 +8,6 @@ This is needed to define double precision versions of missing functions.
 
 #include "BuiltinInt.frag"
 #include "BuiltinFloat.frag"
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 #include "BuiltinDouble.frag"
 #endif

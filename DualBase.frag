@@ -309,6 +309,42 @@ DUAL tanh(DUAL z) {
   return div(sinh(z), cosh(z));
 }
 
+
+#if 0 // TODO inverse trig for dual
+
+VEC4 cAsin(VEC4 z) {
+  const COMPLEX I = complex(0.0, 1.0);
+  return cMul(-I, cLog(cMul(I, z) + cSqrt(cSub(1.0, cSqr(z)))));
+}
+
+VEC4 cAcos(VEC4 z) {
+  const COMPLEX I = complex(0.0, 1.0);
+  return cMul(-I, cLog(z + cMul(I, cSqrt(cSub(1.0, cSqr(z))))));
+}
+
+VEC4 cAtan(VEC4 z) {
+  const COMPLEX I = complex(0.0, 1.0);
+  return cDiv
+    ( cLog(add(1.0, cMul(I, z))) - cLog(cSub(1.0, cMul(I, z)))
+    , 2.0 * I
+    );
+}
+
+VEC4 cAsinh(VEC4 z) {
+  return cLog(z + cSqrt(add(cSqr(z), 1.0)));
+}
+
+VEC4 cAcosh(VEC4 z) {
+  return 2.0 *
+    cLog(cSqrt(0.5 * add(z, 1.0)) + cSqrt(0.5 * cSub(z, 1.0)));
+}
+
+VEC4 cAtanh(VEC4 z) {
+  return 0.5 * (cLog(add(1.0, z)) - cLog(cSub(1.0, z)));
+}
+
+#endif
+
 DUAL abs(DUAL x)
 {
 	if (lt(x.x, mono(0)))

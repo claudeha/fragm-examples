@@ -51,7 +51,7 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define MONO double
 #define mono double
@@ -151,7 +151,7 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define MONO DoubleX
 #define mono doublex

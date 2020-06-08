@@ -35,7 +35,7 @@ Triplex template instantiation.
 #undef REAL
 #undef TRIPLEX
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define TRIPLEX Triplexd
 #define REAL double

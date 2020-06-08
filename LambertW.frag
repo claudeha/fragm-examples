@@ -13,7 +13,7 @@ Lambert W function template instantiation.
 #undef real
 #undef REAL
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define REAL double
 #define real double
@@ -37,7 +37,7 @@ Lambert W function template instantiation.
 #undef real
 #undef REAL
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 #define REAL DoubleX
 #define real doublex

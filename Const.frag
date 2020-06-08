@@ -3,7 +3,7 @@
 Constants.
 */
 
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 
 const double M_PI = 3.14159265358979323846LF;
 const double M_2PI = M_PI*2.0LF;

@@ -5,6 +5,6 @@ Overload builtins.  See `Builtin.frag` for details.
 
 #include "OverloadInt.frag"
 #include "OverloadFloat.frag"
-#ifdef USE_DOUBLE
+#if __VERSION__ >= 400
 #include "OverloadDouble.frag"
 #endif
