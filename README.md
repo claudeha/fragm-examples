@@ -9,15 +9,37 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 See `COPYING.md` for terms.
 
+
 ## Examples
 
   - `00-Mandelbulb-vs-Menger.frag`
 
-    3D hybrid distance estimated fractals
+    3D hybrid distance estimated fractals.
 
-  - `00-mET.frag`
+  - `00-mET.frag`, `00-MuET.frag`
 
-    2D hybrid escape time fractals
+    2D hybrid escape time fractals.
+
+  - `00-Inflection-1.frag` `00-Inflection-2.frag`
+
+    Mandelbrot inflections.
+
+  - `00-Ultimate-AntiBuddhagram.frag`
+
+    4D ultimate anti-Buddhagram surface.
+
+  - `00-Triskelion.frag`
+
+    Failed attempt at Triskelion dial-a-Julia.
+
+  - `00-Variations-1.frag`
+
+    A rational function coloured with atom domains.
+
+  - `00-MandelbarDE.frag`
+
+    (Doesn't work, missing support frags.)
+
 
 ## Library
 
