@@ -244,3 +244,13 @@ FLOATX tanh(FLOATX z)
 {
   return div(sinh(z), cosh(z));
 }
+
+bool isnan(FLOATX z)
+{
+  return isnan(z.m);
+}
+
+bool isinf(FLOATX z)
+{
+  return isinf(z.m);
+}
