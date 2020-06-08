@@ -1,6 +1,7 @@
 #version 150
 // (c) 2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
+#info 2D Mandelbar distance estimation via Jacobian matrix derivative
 
 #group Burning Ship
 #include "Progressive2DJuliaDE.frag"

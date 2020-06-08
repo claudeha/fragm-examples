@@ -1,7 +1,7 @@
 #version 460 compatibility
 // (c) 2019,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
-#info Ultimate Anti-Buddhagram (c) 2019 Claude Heiland-Allen
+#info 4D Ultimate Anti-Buddhagram surface
 #info <https://mathr.co.uk/blog/2019-11-20_ultimate_anti-buddhagram.html>
 
 #define providesInit

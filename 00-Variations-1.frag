@@ -3,6 +3,8 @@
 // (c) 2019,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Created: Tue May 21 17:19:29 2019
+#info 2D quadratic rational Julia/Mandelbrot with edge detection
+
 #include "TwoD.frag"
 
 #group Variations

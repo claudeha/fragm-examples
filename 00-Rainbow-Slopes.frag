@@ -2,6 +2,7 @@
 #extension GL_ARB_arrays_of_arrays : require
 // (c) 2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
+#info 2D Burning Ship coloured by angle of directional distance estimate
 
 #include "TwoD.frag"
 

@@ -1,7 +1,7 @@
 #version 130
 // (c) 2019 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
-#info MuET (c) 2019 Claude Heiland-Allen, license GPL3+
+#info 2D hybrid escape time fractals using traditional FragM library
 
 #include "MathUtils.frag"
 #include "Progressive2D.frag"

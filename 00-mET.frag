@@ -1,7 +1,7 @@
 #version 460 compatibility
 // (c) 2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
-#info "mET" 2D Hybrid Escape Time Fractals (c) 2019,2020 Claude Heiland-Allen, license GPL3+
+#info 2D hybrid escape time fractals with deep zoom support
 
 #define providesDouble
 #define providesCompensated2

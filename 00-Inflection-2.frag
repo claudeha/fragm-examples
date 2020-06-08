@@ -3,6 +3,8 @@
 // (c) 2017,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 // <http://www.fractalforums.com/index.php?topic=25237.msg99697#msg99697>
+#info 2D quadratic Mandelbrot set inflection mapping example 2
+
 #include "TwoD.frag"
 
 #define N 6

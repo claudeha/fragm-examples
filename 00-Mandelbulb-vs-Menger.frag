@@ -2,10 +2,7 @@
 //#extension GL_ARB_arrays_of_arrays : require
 // (c) 2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
-#info "Mandelbulb vs Menger" 3D Hybrid Escape Time Fractals (c) 2020 Claude Heiland-Allen, license GPL3+
-/*
-Main entry point.
-*/
+#info 3D Hybrid Escape Time Fractals
 
 //#define providesColor
 //#define providesNormal

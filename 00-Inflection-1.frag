@@ -4,6 +4,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Created: Thu Feb 2 00:26:31 2017
 // <http://www.fractalforums.com/images-showcase-(rate-my-fractal)/fruity-(inflection-mapping)/>
+#info 2D quadratic Mandelbrot set inflection mapping example 1
+
 #include "TwoD.frag"
 
 const vec2 cs[8] = vec2[8]

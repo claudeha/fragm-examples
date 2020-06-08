@@ -1,6 +1,7 @@
 #version 460 compatibility
 // (c) 2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
+#info 2D Mandelbrot set numerical colouring algorithms (including exterior DE texture)
 
 #define providesDouble
 #include "TwoD.frag"
