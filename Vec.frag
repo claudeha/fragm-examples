@@ -3,6 +3,8 @@
 Vector template instantation.
 */
 
+vec2 add(vec2 a, vec2 b) { return a + b; }
+
 #define VEC Vec2f
 #define vec vec2f
 #define SCALAR float
@@ -149,6 +151,8 @@ Vector template instantation.
 
 #if __VERSION__ >= 400
 
+dvec2 add(dvec2 a, dvec2 b) { return a + b; }
+
 #define VEC Vec2d
 #define vec vec2d
 #define SCALAR double
@@ -220,5 +224,51 @@ Vector template instantation.
 #undef SCALAR
 #undef vec
 #undef VEC
+
+#define VEC Vec2Compensated2
+#define vec vec2compensated2
+#define SCALAR Compensated2
+#define scalar compensated2
+#define VDIM 2
+#include "VecBase.frag"
+#undef VDIM
+#undef scalar
+#undef SCALAR
+#undef vec
+#undef VEC
+
+Vec2Compensated2 vec2compensated2(dvec2 a)
+{
+  return vec2compensated2(Compensated2[2](compensated2(a[0]), compensated2(a[1])));
+}
+
+Vec2Compensated2 add(dvec2 a, Vec2Compensated2 b)
+{
+  return vec2compensated2(Compensated2[2](add(a.x, b.v[0]), add(a.y, b.v[1])));
+}
+
+Vec2Compensated2 add(Vec2Compensated2 b, dvec2 a)
+{
+  return vec2compensated2(Compensated2[2](add(a.x, b.v[0]), add(a.y, b.v[1])));
+}
+
+#endif
+
+Complexf complexf(vec2 z)
+{
+  return complexf(z[0], z[1]);
+}
+
+#if __VERSION__ >= 400
+
+Complexd complexd(dvec2 z)
+{
+  return complexd(z[0], z[1]);
+}
+
+ComplexCompensated2 complexcompensated2(Vec2Compensated2 z)
+{
+  return complexcompensated2(z.v[0], z.v[1]);
+}
 
 #endif
