@@ -15,6 +15,11 @@ COMPLEX complex(REAL x)
   return COMPLEX(x, real(0));
 }
 
+COMPLEX complex(COMPLEX x)
+{
+  return x;
+}
+
 COMPLEX complex(REAL x, REAL y)
 {
   return COMPLEX(x, y);
@@ -152,6 +157,11 @@ COMPLEX div(COMPLEX a, COMPLEX b)
   return mul(a, inv(b));
 }
 
+COMPLEX div(REAL a, COMPLEX b)
+{
+  return mul(a, inv(b));
+}
+
 COMPLEX sqrt(COMPLEX z)
 {
   REAL m = length(z);
@@ -281,4 +291,21 @@ bool eq(COMPLEX a, COMPLEX b)
 bool lt(COMPLEX a, COMPLEX b)
 {
   return lt(a.x, b.x); // FIXME incorrect, but need a definition...
+}
+
+REAL distance(COMPLEX a, COMPLEX b)
+{
+  return length(sub(a, b));
+}
+
+COMPLEX normalize(COMPLEX a)
+{
+  return div(a, length(a));
+}
+
+COMPLEX proj(COMPLEX z)
+{
+  if (isnan(z.x) || isinf(z.x) || isnan(z.y) || isinf(z.y))
+    return complex(real(1.0 / 0.0), real(0.0));
+  return z;
 }

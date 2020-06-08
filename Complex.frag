@@ -58,6 +58,16 @@ Complex number template instantiation file.
 #undef real
 #undef REAL
 
+Complexf complexf(Complexd z)
+{
+  return complexf(float(z.x), float(z.y));
+}
+
+Complexd add(Complexd a, Complexf b)
+{
+  return complexd(add(a.x, b.x), add(a.y, b.y));
+}
+
 #if 0 // TODO
 
 #define REAL Compensated3
