@@ -1,4 +1,5 @@
 #version 330 compatibility
+#extension GL_ARB_arrays_of_arrays : require
 // (c) 2019,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 #info Pauldelbrot's Triskelion extended to "dial-a-Julia" (attempt) by Claude 2019-12-20

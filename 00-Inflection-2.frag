@@ -1,4 +1,5 @@
 #version 330 compatibility
+#extension GL_ARB_arrays_of_arrays : require
 // (c) 2017,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 // <http://www.fractalforums.com/index.php?topic=25237.msg99697#msg99697>

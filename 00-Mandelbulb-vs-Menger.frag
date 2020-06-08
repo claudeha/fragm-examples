@@ -10,6 +10,7 @@ Main entry point.
 //#define providesColor
 //#define providesNormal
 #include "ThreeD.frag"
+#include "DistanceEstimate.frag"
 
 #group Fractal
 // Menger sponge scale factor

@@ -1,4 +1,5 @@
 #version 330 compatibility
+#extension GL_ARB_arrays_of_arrays : require
 // (c) 2017,2020 Claude Heiland-Allen
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Created: Thu Feb 2 00:26:31 2017
