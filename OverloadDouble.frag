@@ -39,3 +39,8 @@ double max(double y, double x) { return _builtin_max(y, x); }
 dvec2 max(dvec2 y, dvec2 x) { return _builtin_max(y, x); }
 dvec3 max(dvec3 y, dvec3 x) { return _builtin_max(y, x); }
 dvec4 max(dvec4 y, dvec4 x) { return _builtin_max(y, x); }
+
+double min(double y, double x) { return _builtin_min(y, x); }
+dvec2 min(dvec2 y, dvec2 x) { return _builtin_min(y, x); }
+dvec3 min(dvec3 y, dvec3 x) { return _builtin_min(y, x); }
+dvec4 min(dvec4 y, dvec4 x) { return _builtin_min(y, x); }

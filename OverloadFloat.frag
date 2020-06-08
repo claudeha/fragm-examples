@@ -154,3 +154,8 @@ float max(float y, float x) { return _builtin_max(y, x); }
 vec2 max(vec2 y, vec2 x) { return _builtin_max(y, x); }
 vec3 max(vec3 y, vec3 x) { return _builtin_max(y, x); }
 vec4 max(vec4 y, vec4 x) { return _builtin_max(y, x); }
+
+float min(float y, float x) { return _builtin_min(y, x); }
+vec2 min(vec2 y, vec2 x) { return _builtin_min(y, x); }
+vec3 min(vec3 y, vec3 x) { return _builtin_min(y, x); }
+vec4 min(vec4 y, vec4 x) { return _builtin_min(y, x); }

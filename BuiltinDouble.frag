@@ -67,3 +67,8 @@ double _builtin_max(double y, double x) { return max(y, x); }
 dvec2 _builtin_max(dvec2 y, dvec2 x) { return max(y, x); }
 dvec3 _builtin_max(dvec3 y, dvec3 x) { return max(y, x); }
 dvec4 _builtin_max(dvec4 y, dvec4 x) { return max(y, x); }
+
+double _builtin_min(double y, double x) { return min(y, x); }
+dvec2 _builtin_min(dvec2 y, dvec2 x) { return min(y, x); }
+dvec3 _builtin_min(dvec3 y, dvec3 x) { return min(y, x); }
+dvec4 _builtin_min(dvec4 y, dvec4 x) { return min(y, x); }
