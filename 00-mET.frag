@@ -27,6 +27,7 @@ uniform bool AbsY1; checkbox[false]
 uniform bool NegX1; checkbox[false]
 uniform bool NegY1; checkbox[false]
 uniform vec2 Mul1; slider[(-10,-10),(1,0),(10,10)]
+uniform bool AddC1; checkbox[true]
 
 #group Formula2
 
@@ -37,6 +38,7 @@ uniform bool AbsY2; checkbox[false]
 uniform bool NegX2; checkbox[false]
 uniform bool NegY2; checkbox[false]
 uniform vec2 Mul2; slider[(-10,-10),(1,0),(10,10)]
+uniform bool AddC2; checkbox[true]
 
 #group Formula3
 
@@ -47,6 +49,7 @@ uniform bool AbsY3; checkbox[false]
 uniform bool NegX3; checkbox[false]
 uniform bool NegY3; checkbox[false]
 uniform vec2 Mul3; slider[(-10,-10),(1,0),(10,10)]
+uniform bool AddC3; checkbox[true]
 
 #group Formula4
 
@@ -57,6 +60,7 @@ uniform bool AbsY4; checkbox[false]
 uniform bool NegX4; checkbox[false]
 uniform bool NegY4; checkbox[false]
 uniform vec2 Mul4; slider[(-10,-10),(1,0),(10,10)]
+uniform bool AddC4; checkbox[true]
 
 
 float length_approx(Complexf a) { return length(a); }
@@ -75,6 +79,12 @@ float negif(bool b, float x) { return b ? neg(x) : x; }
 #if __VERSION__ >= 400
 double negif(bool b, double x) { return b ? neg(x) : x; }
 Compensated2 negif(bool b, Compensated2 x) { return b ? neg(x) : x; }
+#endif
+
+Complexf addif(bool b, Complexf x, Complexf y) { return b ? add(x, y) : x; }
+#if __VERSION__ >= 400
+Complexd addif(bool b, Complexd x, Complexd y) { return b ? add(x, y) : x; }
+ComplexCompensated2 addif(bool b, ComplexCompensated2 x, ComplexCompensated2 y) { return b ? add(x, y) : x; }
 #endif
 
 float EscapeRadius2 = pow(2.0, float(EscapeRadius));
@@ -104,7 +114,7 @@ float dwell(VEC c0) \
   { \
     if (Active1) \
     { \
-      z = add(mul \
+      z = addif(AddC1, mul \
         ( complex(vec(Mul1)) \
         , pow(complex \
           ( negif(NegX1, absif(AbsX1, z.x)) \
@@ -118,7 +128,7 @@ float dwell(VEC c0) \
     } \
     if (Active2) \
     { \
-      z = add(mul \
+      z = addif(AddC2, mul \
         ( complex(vec(Mul2)) \
         , pow(complex \
           ( negif(NegX2, absif(AbsX2, z.x)) \
@@ -132,7 +142,7 @@ float dwell(VEC c0) \
     } \
     if (Active3) \
     { \
-      z = add(mul \
+      z = addif(AddC3, mul \
         ( complex(vec(Mul3)) \
         , pow(complex \
           ( negif(NegX3, absif(AbsX3, z.x)) \
@@ -146,7 +156,7 @@ float dwell(VEC c0) \
     } \
     if (Active4) \
     { \
-      z = add(mul \
+      z = addif(AddC4, mul \
         ( complex(vec(Mul4)) \
         , pow(complex \
           ( negif(NegX4, absif(AbsX4, z.x)) \
