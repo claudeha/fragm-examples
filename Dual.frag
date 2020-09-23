@@ -223,4 +223,17 @@ Dual number template instantiation file.
 #undef mono
 #undef MONO
 
+#define MONO Complexdx
+#define mono complexdx
+#define DDIM 1
+#define DUAL Dual1cdx
+#define dual dual1cdx
+#include "DualBase.frag"
+#undef dual
+#undef DUAL
+#undef DDIM
+#undef mono
+#undef MONO
+
+
 #endif

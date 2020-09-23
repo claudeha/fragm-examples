@@ -215,7 +215,7 @@ DUAL sqrt(DUAL x)
 {
 	DUAL d;
 	d.x = sqrt(x.x);
-	MONO s = div(mono(0.5), d.x);
+	MONO s = inv(mul(mono(2), d.x));
 	for (int i = 0; i < DDIM; ++i)
 	{
 		d.d[i] = mul(x.d[i], s);
@@ -299,12 +299,12 @@ DUAL log(DUAL x)
 
 DUAL sinh(DUAL z)
 {
-	return mul(mono(0.5), sub(exp(z), exp(neg(z))));
+	return div(sub(exp(z), exp(neg(z))), mono(2));
 }
 
 DUAL cosh(DUAL z)
 {
-	return mul(mono(0.5), add(exp(z), exp(neg(z))));
+	return div(add(exp(z), exp(neg(z))), mono(2));
 }
 
 DUAL tanh(DUAL z) {

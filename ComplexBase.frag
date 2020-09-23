@@ -10,6 +10,11 @@ struct COMPLEX
   REAL x, y;
 };
 
+COMPLEX complex(int x)
+{
+  return COMPLEX(real(x), real(0));
+}
+
 COMPLEX complex(REAL x)
 {
   return COMPLEX(x, real(0));
