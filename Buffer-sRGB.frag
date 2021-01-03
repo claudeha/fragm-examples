@@ -4,13 +4,6 @@
 
 #vertex
 
-#ifndef GL_compatibility_profile
-layout(location = 0) in vec4 vertex_position;
-uniform mat4 projectionMatrix;
-#define gl_Vertex vertex_position
-#define gl_ProjectionMatrix projectionMatrix
-#endif
-
 varying vec2 coord;
 
 void main(void)

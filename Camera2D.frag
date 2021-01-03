@@ -4,13 +4,6 @@
 
 #vertex
 
-#ifndef GL_compatibility_profile
-layout(location = 0) in vec4 vertex_position;
-uniform mat4 projectionMatrix;
-#define gl_Vertex vertex_position
-#define gl_ProjectionMatrix projectionMatrix
-#endif
-
 out vec2 coord;
 out vec2 viewCoord;
 
@@ -55,8 +48,6 @@ void main(void)
 
 in vec2 coord;
 in vec2 viewCoord;
-
-out vec4 fragColor;
 
 #if __VERSION__ >= 400
 // Camera zoom
@@ -174,5 +165,5 @@ void main()
     }
     next += one;
   }
-  fragColor = prev + next;
+  gl_FragColor = prev + next;
 }
