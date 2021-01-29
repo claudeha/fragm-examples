@@ -14,5 +14,6 @@
 #include "m_interior_de.frag"
 #include "m_render.frag"
 #include "m_exray_in.frag"
+#include "m_exray_out.frag"
 #include "j_exray_in.frag"
 #include "j_exray_out.frag"
