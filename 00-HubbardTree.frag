@@ -24,6 +24,7 @@ Complexf C = m_newton_pp(m_exray_in(RayDigits, RayPreperiod, RayPeriod, 4, 4, 2 
 
 bool ray(vec2 z0, vec2 dx, vec2 dy, float angle)
 {
+  float t = 0.8; // FIXME hack to prevent spurious ray and tree component at angle 0
   int n = 50; // FIXME needs to be increased for crinkly Julia sets
   float t00 = j_exray_out(complexf(z0.x, z0.y), C, 4, 4, n);
   float t01 = j_exray_out(complexf(z0.x + dy.x, z0.y + dy.y), C, 4, 4, n);
@@ -31,8 +32,7 @@ bool ray(vec2 z0, vec2 dx, vec2 dy, float angle)
   float t11 = j_exray_out(complexf(z0.x + dx.x + dy.x, z0.y + dx.y + dy.y), C, 4, 4, n);
   return
     t00 >= 0.0 && t01 >= 0.0 && t10 >= 0.0 && t11 >= 0.0 &&
-    // FIXME hack to prevent spurious ray and tree component at angle 0
-    abs(t00 - t11) < 0.75 && abs(t00 - t10) < 0.75 && abs(t00 - t01) < 0.75 &&
+    abs(t00 - t11) < t && abs(t00 - t10) < t && abs(t00 - t01) < t &&
     !((t00 >= angle) == (t11 >= angle) && (t00 >= angle) == (t10 >= angle) && (t00 >= angle) == (t01 >= angle));
 }
 
