@@ -28,6 +28,7 @@ Library definition.
 #include "Magnetbulb.frag"
 #include "Hash.frag"
 #include "MultiWave.frag"
+#include "MandelbrotNumerics.frag"
 #include "Quaternion.frag"
 #include "D65.frag"
 #include "Glass.frag"
