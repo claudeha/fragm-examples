@@ -24,7 +24,7 @@ float derivative(Dual1f x) { return x.d[0]; }
 #define DUAL Dual2f
 #define dual dual2f
 #include "DualBase.frag"
-vec2 derivative(Dual2f x) { return vec2(x.d[0], x.d1[1]); }
+vec2 derivative(Dual2f x) { return vec2(x.d[0], x.d[1]); }
 #undef dual
 #undef DUAL
 #undef DDIM
