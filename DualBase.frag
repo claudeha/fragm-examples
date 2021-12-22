@@ -373,3 +373,8 @@ bool lt(MONO x, DUAL y)
 {
 	return lt(x, y.x);
 }
+
+MONO value(DUAL x)
+{
+	return x.x;
+}

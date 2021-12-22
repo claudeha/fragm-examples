@@ -140,3 +140,37 @@ VEC cross(VEC a, VEC b)
   return v;
 }
 #endif
+
+#ifdef SUBSCALAR
+
+VEC mul(VEC x, SUBSCALAR y)
+{
+  VEC v;
+  for (int i = 0; i < VDIM; ++i)
+  {
+    v.v[i] = mul(x.v[i], y);
+  }
+  return v;
+}
+
+VEC mul(SUBSCALAR x, VEC y)
+{
+  VEC v;
+  for (int i = 0; i < VDIM; ++i)
+  {
+    v.v[i] = mul(x, y.v[i]);
+  }
+  return v;
+}
+
+VEC div(VEC x, SUBSCALAR y)
+{
+  VEC v;
+  for (int i = 0; i < VDIM; ++i)
+  {
+    v.v[i] = div(x.v[i], y);
+  }
+  return v;
+}
+
+#endif

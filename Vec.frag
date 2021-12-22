@@ -47,9 +47,20 @@ vec2 add(vec2 a, vec2 b) { return a + b; }
 #define vec vec2dual2f
 #define SCALAR Dual2f
 #define scalar dual2f
+#define SUBSCALAR float
 #define VDIM 2
 #include "VecBase.frag"
+Vec2Dual2f variable(vec2 p)
+{
+  Vec2Dual2f c;
+  c.v[0] = dual2f(p.x, 0);
+  c.v[1] = dual2f(p.y, 1);
+  return c;
+}
+vec2 value(Vec2Dual2f z) { return vec2(z.v[0].x, z.v[1].x); }
+mat2 derivative(Vec2Dual2f z) { return mat2(z.v[0].d[0], z.v[0].d[1], z.v[1].d[0], z.v[1].d[1]); }
 #undef VDIM
+#undef SUBSCALAR
 #undef scalar
 #undef SCALAR
 #undef vec
@@ -59,9 +70,25 @@ vec2 add(vec2 a, vec2 b) { return a + b; }
 #define vec vec3dual3f
 #define SCALAR Dual3f
 #define scalar dual3f
+#define SUBSCALAR float
 #define VDIM 3
 #include "VecBase.frag"
+Vec3Dual3f variable(vec3 p)
+{
+  Vec3Dual3f c;
+  c.v[0] = dual3f(p.x, 0);
+  c.v[1] = dual3f(p.y, 1);
+  c.v[2] = dual3f(p.z, 2);
+  return c;
+}
+vec3 value(Vec3Dual3f z) { return vec3(z.v[0].x, z.v[1].x, z.v[2].x); }
+mat3 derivative(Vec3Dual3f z) { return mat3
+   ( z.v[0].d[0], z.v[0].d[1], z.v[0].d[2]
+   , z.v[1].d[0], z.v[1].d[1], z.v[1].d[2]
+   , z.v[2].d[0], z.v[2].d[1], z.v[2].d[2]
+   ); }
 #undef VDIM
+#undef SUBSCALAR
 #undef scalar
 #undef SCALAR
 #undef vec
@@ -71,9 +98,27 @@ vec2 add(vec2 a, vec2 b) { return a + b; }
 #define vec vec4dual4f
 #define SCALAR Dual4f
 #define scalar dual4f
+#define SUBSCALAR float
 #define VDIM 4
 #include "VecBase.frag"
+Vec4Dual4f variable(vec4 p)
+{
+  Vec4Dual4f c;
+  c.v[0] = dual4f(p.x, 0);
+  c.v[1] = dual4f(p.y, 1);
+  c.v[2] = dual4f(p.z, 2);
+  c.v[3] = dual4f(p.z, 3);
+  return c;
+}
+vec4 value(Vec4Dual4f z) { return vec4(z.v[0].x, z.v[1].x, z.v[2].x, z.v[3].x); }
+mat4 derivative(Vec4Dual4f z) { return mat4
+   ( z.v[0].d[0], z.v[0].d[1], z.v[0].d[2], z.v[0].d[3]
+   , z.v[1].d[0], z.v[1].d[1], z.v[1].d[2], z.v[1].d[3]
+   , z.v[2].d[0], z.v[2].d[1], z.v[2].d[2], z.v[2].d[3]
+   , z.v[3].d[0], z.v[3].d[1], z.v[3].d[2], z.v[3].d[3]
+   ); }
 #undef VDIM
+#undef SUBSCALAR
 #undef scalar
 #undef SCALAR
 #undef vec
@@ -197,6 +242,15 @@ dvec2 add(dvec2 a, dvec2 b) { return a + b; }
 #define scalar dual2d
 #define VDIM 2
 #include "VecBase.frag"
+Vec2Dual2d variable(dvec2 p)
+{
+  Vec2Dual2d c;
+  c.v[0] = dual2d(p.x, 0);
+  c.v[1] = dual2d(p.y, 1);
+  return c;
+}
+dvec2 value(Vec2Dual2d z) { return dvec2(z.v[0].x, z.v[1].x); }
+dmat2 derivative(Vec2Dual2d z) { return dmat2(z.v[0].d[0], z.v[0].d[1], z.v[1].d[0], z.v[1].d[1]); }
 #undef VDIM
 #undef scalar
 #undef SCALAR
@@ -209,6 +263,20 @@ dvec2 add(dvec2 a, dvec2 b) { return a + b; }
 #define scalar dual3d
 #define VDIM 3
 #include "VecBase.frag"
+Vec3Dual3d variable(dvec3 p)
+{
+  Vec3Dual3d c;
+  c.v[0] = dual3d(p.x, 0);
+  c.v[1] = dual3d(p.y, 1);
+  c.v[2] = dual3d(p.z, 2);
+  return c;
+}
+dvec3 value(Vec3Dual3f z) { return dvec3(z.v[0].x, z.v[1].x, z.v[2].x); }
+dmat3 derivative(Vec3Dual3f z) { return dmat3
+   ( z.v[0].d[0], z.v[0].d[1], z.v[0].d[2]
+   , z.v[1].d[0], z.v[1].d[1], z.v[1].d[2]
+   , z.v[2].d[0], z.v[2].d[1], z.v[2].d[2]
+   ); }
 #undef VDIM
 #undef scalar
 #undef SCALAR
@@ -221,6 +289,22 @@ dvec2 add(dvec2 a, dvec2 b) { return a + b; }
 #define scalar dual4d
 #define VDIM 4
 #include "VecBase.frag"
+Vec4Dual4d variable(dvec4 p)
+{
+  Vec4Dual4d c;
+  c.v[0] = dual4d(p.x, 0);
+  c.v[1] = dual4d(p.y, 1);
+  c.v[2] = dual4d(p.z, 2);
+  c.v[3] = dual4d(p.z, 3);
+  return c;
+}
+dvec4 value(Vec4Dual4d z) { return dvec4(z.v[0].x, z.v[1].x, z.v[2].x, z.v[3].x); }
+dmat4 derivative(Vec4Dual4d z) { return dmat4
+   ( z.v[0].d[0], z.v[0].d[1], z.v[0].d[2], z.v[0].d[3]
+   , z.v[1].d[0], z.v[1].d[1], z.v[1].d[2], z.v[1].d[3]
+   , z.v[2].d[0], z.v[2].d[1], z.v[2].d[2], z.v[2].d[3]
+   , z.v[3].d[0], z.v[3].d[1], z.v[3].d[2], z.v[3].d[3]
+   ); }
 #undef VDIM
 #undef scalar
 #undef SCALAR

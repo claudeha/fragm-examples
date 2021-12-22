@@ -11,6 +11,7 @@ Dual number template instantiation file.
 #define DUAL Dual1f
 #define dual dual1f
 #include "DualBase.frag"
+float derivative(Dual1f x) { return x.d[0]; }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -23,6 +24,7 @@ Dual number template instantiation file.
 #define DUAL Dual2f
 #define dual dual2f
 #include "DualBase.frag"
+vec2 derivative(Dual2f x) { return vec2(x.d[0], x.d1[1]); }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -35,6 +37,7 @@ Dual number template instantiation file.
 #define DUAL Dual3f
 #define dual dual3f
 #include "DualBase.frag"
+vec3 derivative(Dual3f x) { return vec3(x.d[0], x.d[1], x.d[2]); }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -47,6 +50,7 @@ Dual number template instantiation file.
 #define DUAL Dual4f
 #define dual dual4f
 #include "DualBase.frag"
+vec4 derivative(Dual4f x) { return vec4(x.d[0], x.d[1], x.d[2], x.d[3]); }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -59,6 +63,7 @@ Dual number template instantiation file.
 #define DUAL Dual1cf
 #define dual dual1cf
 #include "DualBase.frag"
+Complexf derivative(Dual1cf x) { return x.d[0]; }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -73,6 +78,7 @@ Dual number template instantiation file.
 #define DUAL Dual1d
 #define dual dual1d
 #include "DualBase.frag"
+double derivative(Dual1d x) { return x.d[0]; }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -85,6 +91,7 @@ Dual number template instantiation file.
 #define DUAL Dual2d
 #define dual dual2d
 #include "DualBase.frag"
+dvec2 derivative(Dual2d x) { return dvec2(x.d[0], x.d[1]); }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -97,6 +104,7 @@ Dual number template instantiation file.
 #define DUAL Dual3d
 #define dual dual3d
 #include "DualBase.frag"
+dvec3 derivative(Dual3d x) { return dvec3(x.d[0], x.d[1], x.d[2]); }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -109,6 +117,7 @@ Dual number template instantiation file.
 #define DUAL Dual4d
 #define dual dual4d
 #include "DualBase.frag"
+dvec4 derivative(Dual4d x) { return dvec4(x.d[0], x.d[1], x.d[2], x.d[3]); }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -217,6 +226,7 @@ Dual number template instantiation file.
 #define DUAL Dual1cd
 #define dual dual1cd
 #include "DualBase.frag"
+Complexd derivative(Dual1cd x) { return x.d[0]; }
 #undef dual
 #undef DUAL
 #undef DDIM
@@ -229,6 +239,7 @@ Dual number template instantiation file.
 #define DUAL Dual1cdx
 #define dual dual1cdx
 #include "DualBase.frag"
+Complexdx derivative(Dual1cdx x) { return x.d[0]; }
 #undef dual
 #undef DUAL
 #undef DDIM
